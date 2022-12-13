@@ -16,7 +16,7 @@ const App = () => {
           <Route path='/signin' component={Signin} exact />
           <Route path='/signup' component={Signup} exact />
           <Route path='/forgot-password' component={ForgotPassword} exact />
-          <Route path='/reseted-password' component={ResetedPassword} exact />
+          <Route path='/password-reset/:userID/:token' component={ResetedPassword} exact />
           <Redirect from='/' to='/signup' />
       </Switch>     
     </Router>

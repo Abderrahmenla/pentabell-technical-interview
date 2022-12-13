@@ -8,6 +8,7 @@ import connectDB from './config/db.js';
 import cors from 'cors';
 import todosRoutes from './routes/todosRoutes.js';
 import userRoutes from './routes/userRoutes.js';
+import forgotPasswordRoutes from './routes/forgotPasswordRoutes.js';
 import swaggerUi from 'swagger-ui-express';
 import { readFile } from 'fs/promises';
 
@@ -40,8 +41,9 @@ if (process.env.NODE_ENV === 'development') {
 
 app.use(express.json());
 
-app.use('/api/todos', todosRoutes);
 app.use('/api', userRoutes);
+app.use('/api/todos', todosRoutes);
+app.use('/api/password-reset', userRoutes);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
 if (process.env.NODE_ENV === 'production') {

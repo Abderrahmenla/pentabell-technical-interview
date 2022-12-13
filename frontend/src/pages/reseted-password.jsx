@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link,useParams } from 'react-router-dom'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
 import "../assets/scss/style.scss";
@@ -7,13 +7,12 @@ import useApi from '../hooks/use-api'
 import dataRequest from '../api/dataRequest'
 
 const ResetedPassword = ({  history }) => {
-  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  let {userID,token} = useParams();
+  console.log(userID)
   const req = useApi(dataRequest);
-  let token;
-  let userId;
-  let password;
 
-  const changePassword = async (e) => {
+  const submitHandler = async (e) => {
     e.preventDefault()
     const requestOptions = {
       method: 'POST',
@@ -21,7 +20,7 @@ const ResetedPassword = ({  history }) => {
       body: JSON.stringify({ password})
   };
   try {
-    const res = await req.request(`http://localhost:5000/api/password-reset/${userId}/${token}`,requestOptions);
+    const res = await req.request(`http://localhost:5000/api/password-reset/${userID}/${token}`,requestOptions);
   } catch (error) {
     console.error(error)
   }
@@ -42,7 +41,22 @@ const ResetedPassword = ({  history }) => {
             </div>
 
             <div className="signin-form">
-                <h2 className="form-title"> Password Changed</h2>
+                <h2 className="form-title">Reset Password</h2>
+                <form onSubmit={submitHandler} className="register-form" id="login-form">
+                    <div className="form-group">
+                        <label htmlFor="your_pass"><i className="zmdi zmdi-lock"></i></label>
+                        <input 
+                          value={password}
+                          onChange={(e) => setPassword(e.target.value)}
+                          type="password" 
+                          name="your_pass" 
+                          id="your_pass" 
+                          placeholder="Password"/>
+                    </div>
+                    <div className="form-group form-button">
+                        <input type="submit" name="signin" id="signin" className="form-submit" value="Log in"/>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
