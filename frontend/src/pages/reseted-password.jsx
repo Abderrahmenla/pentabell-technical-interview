@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link,useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
 import "../assets/scss/style.scss";
@@ -34,10 +34,7 @@ const ResetedPassword = ({  history }) => {
     <div className="container">
         <div className="signin-content">
             <div className="signin-image">
-                <figure><img src="images/signin-image.jpg" alt="sing up"/></figure>
-                <Link to={'/signin'}>
-                  Sign in
-                </Link>
+                <figure><img src="/images/signin-image.jpg" alt="reset password"/></figure>
             </div>
 
             <div className="signin-form">

@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
 import "../assets/scss/style.scss";
@@ -28,10 +27,7 @@ const ForgotPassword = ({  history }) => {
     <div className="container">
         <div className="signin-content">
             <div className="signin-image">
-                <figure><img src="images/signin-image.jpg" alt="sing up"/></figure>
-                <Link to={'/signin'}>
-                  Sign in
-                </Link>
+                <figure><img src="images/signin-image.jpg" alt="forgot password"/></figure>
             </div>
 
             <div className="signin-form">
@@ -48,7 +44,7 @@ const ForgotPassword = ({  history }) => {
                           placeholder="Email"/>
                     </div>
                     <div className="form-group form-button">
-                        <input type="submit" name="signin" id="signin" className="form-submit" value="Log in"/>
+                        <input type="submit" name="signin" id="signin" className="form-submit" value="Submit"/>
                     </div>
                 </form>
             </div>
