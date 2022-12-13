@@ -5,7 +5,7 @@ import "../assets/scss/style.scss";
 import useApi from '../hooks/use-api'
 import dataRequest from '../api/dataRequest'
 
-const ForgotPassword = ({  history }) => {
+const ForgotPassword = () => {
   const [email, setEmail] = useState('')
   const req = useApi(dataRequest);
 

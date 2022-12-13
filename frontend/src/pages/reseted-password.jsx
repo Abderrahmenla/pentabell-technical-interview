@@ -6,8 +6,9 @@ import "../assets/scss/style.scss";
 import useApi from '../hooks/use-api'
 import dataRequest from '../api/dataRequest'
 
-const ResetedPassword = ({  history }) => {
+const ResetedPassword = () => {
   const [password, setPassword] = useState('')
+  const [message, setMessage] = useState('')
   let {userID,token} = useParams();
   console.log(userID)
   const req = useApi(dataRequest);
@@ -21,6 +22,8 @@ const ResetedPassword = ({  history }) => {
   };
   try {
     const res = await req.request(`http://localhost:5000/api/password-reset/${userID}/${token}`,requestOptions);
+    console.log(res)
+    setMessage(res.message)
   } catch (error) {
     console.error(error)
   }
@@ -29,6 +32,7 @@ const ResetedPassword = ({  history }) => {
 
   return (
     <section className="sign-in">
+      {message && <Message>{req.error}</Message>}
       {req.error && <Message variant='danger'>{req.error}</Message>}
       {req.loading && <Loader />}
     <div className="container">

@@ -41,6 +41,10 @@ const Singin = ({  history }) => {
                 <Link to={'/signup'}>
                 Create an account
                 </Link>
+                <br/>
+                <Link to={'/forgot-password'}>
+                  Forgot password
+                </Link>
             </div>
 
             <div className="signin-form">
